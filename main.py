@@ -1,19 +1,24 @@
 file_name = "data.txt"
 
-def book_reader(file_name):
-  with open (file_name, encoding="utf-8") as file:
-    cook_book = {}
-    for line in file:
-      dish_name = line.strip()
-      foods = []
-      quantity = file.readline()
-      for item in range(int(quantity)):
-        food = file.readline()
-        foods.append(food.strip())
-      cook_book[dish_name] = foods
+def open_file(file_name):
+    with open(file_name, 'r', encoding='utf-8') as file:
+        return file.read().strip().split('\n\n')
         
-      file.readline()
-    return cook_book
+file_show = open_file('DZ №7\dish_list.txt')
+
+# структурируем данные в требуемый вид с учётом задания
+def structure_data(dish_list):
+    for item in dish_list:
+        res = item.split('\n')
+        for i in res[2:]:
+            ras = i.split(' | ')
+            cook_book = {res[0]:[{'ingredient_name': ras[0]}, {'quantity': ras[1]}, {'measure': ras[2]}]}
+            print(cook_book)
+structure_data(file_show)
+        
+      
+
+
 
     
 
@@ -25,4 +30,4 @@ def book_reader(file_name):
 
 
 
-print(book_reader(file_name))
+
