@@ -13,33 +13,33 @@ file_name = 'data.txt'
 #     res = item.split('\n')
 #     for i in res[2:]:
 #       ras = i.split(' | ')
+#       # print(ras)
 #       cook_book = {res[0]:{'name': ras[0], 'quan': ras[1], 'mesu': ras[2]}}
 #       print(cook_book)
-
-
-
-
+    
+      
 # cook_book(file_show)
+def file_reader(file_name):
+    with open(file_name, encoding='utf-8') as file:
+        cook_book = {}
+        for line in file:
+            line = line.strip()
+            cook_book.update({line : []})
+            for item in range(int(file.readline().strip())):
+                lst = file.readline().strip().split('|')
+                dict = {'name':lst[0], 'quan':lst[1], 'mes': lst[2]}
+                cook_book[line].append(dict)
+            file.readline()
+        return cook_book
 
-def book_reader(file_name):
-  with open (file_name, encoding='utf8') as file:
-    cook_book = {}
-    for line in file:
-      dish_name = line.strip()
-      foods = []
-      for item in range(int(file.readline())):        
-        food = file.readline().split(' | ')
-        food = [line.rstrip() for line in food]
-        
-        foods.append(food)
-        
-        
-      cook_book[dish_name] = foods
-      file.readline()
-    return cook_book
-
-
-print(book_reader(file_name))
+print(file_reader(file_name))
 
 
 
+
+
+# print(book_reader(file_name))
+
+
+# cook_book = {res[0]:{'name': ras[0], 'quan': ras[1], 'mesu': ras[2]}}
+#     print(cook_book)
