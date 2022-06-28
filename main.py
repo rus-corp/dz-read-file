@@ -1,24 +1,6 @@
 file_name = 'data.txt'
 
-# def open_file(file_name):
-#   with open(file_name, encoding='utf8') as file:
-#     return file.read().strip().split('\n\n')
-
-
-# file_show = open_file('data.txt')
-
-
-# def cook_book (dish_menu):
-#   for item in dish_menu:
-#     res = item.split('\n')
-#     for i in res[2:]:
-#       ras = i.split(' | ')
-#       # print(ras)
-#       cook_book = {res[0]:{'name': ras[0], 'quan': ras[1], 'mesu': ras[2]}}
-#       print(cook_book)
-    
       
-# cook_book(file_show)
 def file_reader(file_name):
     with open(file_name, encoding='utf-8') as file:
         cook_book = {}
@@ -34,12 +16,22 @@ def file_reader(file_name):
 
 print(file_reader(file_name))
 
+cook_book = file_reader(file_name)
+
+
+def get_shop_list_by_dishes(dishes, person_count):
+  menu = {}
+  for k, v in cook_book.items():
+    if dishes == k:
+      for item in v:
+        menu1 = item.copy()
+        menu1['quan'] = menu1.get('quan') * person_count
+        x = menu1.get('name')
+        menu[x] = menu1
+  return (menu)
+
+print(get_shop_list_by_dishes('Омлет', 3))
 
 
 
-
-# print(book_reader(file_name))
-
-
-# cook_book = {res[0]:{'name': ras[0], 'quan': ras[1], 'mesu': ras[2]}}
-#     print(cook_book)
+  
