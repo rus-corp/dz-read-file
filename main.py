@@ -1,3 +1,5 @@
+import os
+
 # file_name = 'data.txt'
 
       
@@ -37,40 +39,8 @@ file2 = '2.txt'
 file3 = '3.txt'
 file4 = 'tot_file.txt'
 
-
-def file_writen(file1, file4):
-  with open(file1, encoding='utf8') as f1:
-    for line in f1:
-      print(line)  
-  with open(file4, 'w', encoding='utf8') as f4:
-    f4.writelines(line)
-    for line2 in f4:
-      print(line2)
-
-print(file_writen(file1, file4))
-
-# def file_writen(file1, file2, file3):
-#   with open(file1, encoding='utf8') as file1:
-#     f1 = len(file1.readlines())
-#   with open(file2, encoding='utf8') as file2:
-#     f2 = len(file2.readlines())
-#   with open(file3, encoding='utf8') as file3:
-#     f3 = len(file3.readlines())
-#   with open(file4, 'w', 'encoding=utf8') as f4:
-#     if f1 > f2 and f1 > f3:
-#       f4.writelines(file2)
-#       f4.writelines(file3)
-#       f4.writelines(file1)
-#     elif f1 > f2 and f1 < f3:
-#       f4.writelines(file2)
-#       f4.writelines(file1)
-#       f4.writelines(file3)
-#     elif f1 < f2 and f3 > f2:
-#       f4.writelines(file1)
-#       f4.writelines(file2)
-#       f4.writelines(file3)
-
-# print(file_writen(file1, file2, file3))
+list_of_files = os.listdir('dir_with_files')
+print(list_of_files)
 
 
 
